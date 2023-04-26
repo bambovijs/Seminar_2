@@ -105,6 +105,11 @@ public class MainService {
         for(Course temp : allCoursesList){
             System.out.println(temp.getTitle() + " : " + calculateAVGGradeInCourse(temp));
         } 
+
+        System.out.println("---------------------------------");
+        for(Student temp : allStudentsList){
+            System.out.println(temp.getName() + " : " + calculateWeightedAVGGrade(temp));
+        } 
     }
 
     private static float calculateAVGGrade(Student student){
@@ -142,6 +147,26 @@ public class MainService {
         }
         else{
             return 0;
+        }
+    }
+
+    private static float calculateWeightedAVGGrade(Student student){
+        if(student != null){
+            float gradesSum = 0;
+            int creditPointsCounter = 0;
+            for(Grade temp : allGradeList){
+                if(temp.getStudent().equals(student)){
+                    gradesSum += (temp.getGradeValue()*temp.getCourse().getCreditPoints());
+                    creditPointsCounter += temp.getCourse().getCreditPoints();
+
+
+                }
+            }
+
+            return gradesSum/creditPointsCounter;
+        }
+        else {
+            return 0.0f;
         }
     }
 }
