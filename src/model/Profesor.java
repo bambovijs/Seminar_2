@@ -58,13 +58,20 @@ public class Profesor {
         setP_degree(Degree.Unknown);
     }
 
-    public Profesor(long p_id, String p_name, String p_surename, Degree p_degree) {
+    public Profesor(String p_name, String p_surename, Degree p_degree) {
         setP_id();
         setP_name(p_name);
         setP_surename(p_surename);
         setP_degree(p_degree);
     }
+    @Override
+    public String toString() {
+        return "Profesor [p_id=" + p_id + ", p_name=" + p_name + ", p_surename=" + p_surename + ", p_degree=" + p_degree
+                + "]";
+    }
 
     // 4. toString()
+
+    
     // 5. additional functions 
 }

@@ -1,6 +1,10 @@
 package service;
 
+import model.Course;
+import model.CourseGradeType;
+import model.Degree;
 import model.Faculty;
+import model.Profesor;
 import model.Student;
 
 public class MainService {
@@ -9,5 +13,17 @@ public class MainService {
         System.out.println(st1);
         Student st2 = new Student("Jānis", "Bērziņš", Faculty.Unknown, "101010-10101");
         System.out.println(st2);
+
+        Profesor pr1 = new Profesor();
+        System.out.println(pr1);
+        Profesor pr2 = new Profesor("Ra", "Ba", Degree.Master);
+        System.out.println(pr2);
+
+        Course c1 = new Course();
+        System.out.println(c1);
+        Course c2 = new Course("Programmesana timekli", 4, CourseGradeType.EXAM, pr2);
+        System.out.println(c2);
+        Course c3 = new Course("Difrencialvienadojumi", 2, CourseGradeType.EXAM, pr1);
+        System.out.println(c3);
     }
 }
