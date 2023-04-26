@@ -10,29 +10,49 @@ import model.Student;
 
 public class MainService {
     public static void main(String[] args) {
+
+        //TODO create 4 arrays and add all elements
+        // Student[] allStudents = new Student[6];
+        // Profesor[] profesors = new Profesor[6];
+        // Course[] courses = new Course[6];
+        // Grade[] grades = new Grade[6];
+
         Student st1 = new Student();
-        System.out.println(st1);
         Student st2 = new Student("Jānis", "Bērziņš", Faculty.Unknown, "101010-10101");
-        System.out.println(st2);
+
+        Student[] allStudents = {st1, st2};
+
+        for(Student temp : allStudents){
+            System.out.println(temp);
+        }
 
         Profesor pr1 = new Profesor();
-        System.out.println(pr1);
         Profesor pr2 = new Profesor("Ra", "Ba", Degree.Master);
-        System.out.println(pr2);
+
+        Profesor[] allProfesors = {pr1, pr2};
+
+        for(Profesor temp : allProfesors){
+            System.out.println(temp);
+        }
 
         Course c1 = new Course();
-        System.out.println(c1);
         Course c2 = new Course("Programmesana timekli", 4, CourseGradeType.EXAM, pr2);
-        System.out.println(c2);
         Course c3 = new Course("Difrencialvienadojumi", 2, CourseGradeType.EXAM, pr1);
-        System.out.println(c3);
+
+        Course[] allCourses = {c1, c2, c3};
+
+        for(Course temp : allCourses){
+            System.out.println(temp);
+        }
 
         Grade gr1 = new Grade();
-        System.out.println(gr1);
         Grade gr2 = new Grade(10, st2, c2);
-        System.out.println(gr2);
         Grade gr3 = new Grade(6, st1, c3);
-        System.out.println(gr3);
 
+        Grade[] allGrades = {gr1, gr2, gr3};
+
+        for(Grade temp : allGrades){
+            System.out.println(temp);
+        }
     }
 }

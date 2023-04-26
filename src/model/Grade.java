@@ -71,13 +71,12 @@ public class Grade {
         setCourse(course);
     }
 
+    //4.toString
     @Override
     public String toString() {
         return "" + g_id + ": " + student.getName() + " " + student.getSurename() + ", grade ->" + gradeValue + " ("+ course.getTitle() +")";
     }
 
-    //4.toString
-    
 
     //aditional functions
 }
