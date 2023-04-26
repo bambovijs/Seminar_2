@@ -11,11 +11,11 @@ public class Grade {
 
     //2.getters and setters
     public long getG_id() {
-        return g_ID;
+        return g_id;
     }
 
     public void setG_id(){
-        this.g_ID = gradeCounter;
+        this.g_id = gradeCounter;
         gradeCounter++;
     }
     public int getGradeValue() {
@@ -71,7 +71,13 @@ public class Grade {
         setCourse(course);
     }
 
+    @Override
+    public String toString() {
+        return "" + g_id + ": " + student.getName() + " " + student.getSurename() + ", grade ->" + gradeValue + " ("+ course.getTitle() +")";
+    }
+
     //4.toString
+    
 
     //aditional functions
 }
