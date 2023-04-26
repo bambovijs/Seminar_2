@@ -76,9 +76,23 @@ public class Course {
         return courseCounter;
     }
     
-
-
     //3.Constructors
+    public Course(){
+        setId();
+        setTitle("Unknown Title");
+        setCreditPoints(0);
+        setCourseGradeType(CourseGradeType.Other);
+        setProfesor(new Profesor());
+    }
+
+    public Course(String title, int creditPoints, CourseGradeType type, Profesor profesor){
+        setId();
+        setTitle(title);
+        setCreditPoints(creditPoints);
+        setCourseGradeType(type);
+        setProfesor(profesor);
+    }
+
     //4.toString
     //5.Additional functions
 }
