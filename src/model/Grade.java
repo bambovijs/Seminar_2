@@ -2,7 +2,7 @@ package model;
 
 public class Grade {
     //1.variables
-    private long g_ID;
+    private long g_id;
     private int gradeValue;
     private Student student;
     private Course course;
@@ -10,7 +10,7 @@ public class Grade {
     private static long gradeCounter = 15000;
 
     //2.getters and setters
-    public long getG_ID() {
+    public long getG_id() {
         return g_ID;
     }
 
@@ -57,6 +57,19 @@ public class Grade {
     
 
     //3.constructors
+    public Grade(){
+        setG_id();
+        setCourse(new Course());
+        setStudent(new Student());
+        setGradeValue(0);
+    }
+
+    public Grade(int gradeValue, Student student, Course course){
+        setG_id();
+        setGradeValue(gradeValue);
+        setStudent(student);
+        setCourse(course);
+    }
 
     //4.toString
 
