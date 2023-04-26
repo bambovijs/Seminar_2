@@ -93,6 +93,13 @@ public class Course {
         setProfesor(profesor);
     }
 
+    @Override
+    public String toString() {
+        return "" + id + ": " + title + ", (" + creditPoints + "), " + type
+                + ", " + profesor.getP_name() + " " + profesor.getP_surename();
+    }
+
     //4.toString
+    
     //5.Additional functions
 }
