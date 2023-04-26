@@ -11,6 +11,10 @@ import model.Profesor;
 import model.Student;
 
 public class MainService {
+    private static ArrayList<Student> allStudentsList = new ArrayList<>();
+    private static ArrayList<Profesor> allProfesorList = new ArrayList<>();
+    private static ArrayList<Course> allCoursesList = new ArrayList<>();
+    private static ArrayList<Grade> allGradeList = new ArrayList<>();
     public static void main(String[] args) {
 
         //TODO create 4 arrays and add all elements
@@ -28,7 +32,7 @@ public class MainService {
             System.out.println(temp);
         }
 
-        ArrayList<Student> allStudentsList = new ArrayList<>();
+        //ArrayList<Student> allStudentsList = new ArrayList<>();
         allStudentsList.add(st1);
         allStudentsList.add(st2);
 
@@ -40,9 +44,9 @@ public class MainService {
         Profesor pr1 = new Profesor();
         Profesor pr2 = new Profesor("Ra", "Ba", Degree.Master);
 
-        Profesor[] allProfesors = {pr1, pr2};
+       //Profesor[] allProfesors = {pr1, pr2};
 
-        for(Profesor temp : allProfesors){
+        for(Profesor temp : allProfesorList){
             System.out.println(temp);
         }
 
@@ -64,7 +68,7 @@ public class MainService {
             System.out.println(temp);
         }
 
-        ArrayList<Course> allCoursesList = new ArrayList<>();
+        //ArrayList<Course> allCoursesList = new ArrayList<>();
         allCoursesList.add(c1);
         allCoursesList.add(c2);
         allCoursesList.add(c3);
@@ -83,13 +87,37 @@ public class MainService {
             System.out.println(temp);
         }
 
-        ArrayList<Grade> allGradeList = new ArrayList<>();
+        //ArrayList<Grade> allGradeList = new ArrayList<>();
         allGradeList.add(gr1);
         allGradeList.add(gr2);
         allGradeList.add(gr3);
 
         for(Grade temp : allGradeList){
             System.out.println(temp);
+        }
+
+        System.out.println("---------------------------------");
+        for(Student temp : allStudentsList){
+            System.out.println(temp.getName() + ": " + calculateAVGGrade(temp));
+        }
+    }
+
+    private static float calculateAVGGrade(Student student){
+        if(student != null){
+            int gradesSum = 0;
+            int gradesCounter = 0;
+
+            for(Grade temp : allGradeList){
+                if(temp.getStudent().equals(student)){
+                    gradesSum += temp.getGradeValue();
+                    gradesCounter++;
+                }
+            }
+
+            return gradesSum/((float)gradesCounter);
+        }
+        else{
+            return 0;
         }
     }
 }
