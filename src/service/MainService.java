@@ -1,5 +1,7 @@
 package service;
 
+import java.util.ArrayList;
+
 import model.Course;
 import model.CourseGradeType;
 import model.Degree;
@@ -26,12 +28,29 @@ public class MainService {
             System.out.println(temp);
         }
 
+        ArrayList<Student> allStudentsList = new ArrayList<>();
+        allStudentsList.add(st1);
+        allStudentsList.add(st2);
+
+        for(Student temp : allStudentsList){
+            System.out.println(temp);
+        }
+
+
         Profesor pr1 = new Profesor();
         Profesor pr2 = new Profesor("Ra", "Ba", Degree.Master);
 
         Profesor[] allProfesors = {pr1, pr2};
 
         for(Profesor temp : allProfesors){
+            System.out.println(temp);
+        }
+
+        ArrayList<Profesor> allProfesorList = new ArrayList<>();
+        allProfesorList.add(pr1);
+        allProfesorList.add(pr2);
+        
+        for(Profesor temp : allProfesorList){
             System.out.println(temp);
         }
 
@@ -45,6 +64,15 @@ public class MainService {
             System.out.println(temp);
         }
 
+        ArrayList<Course> allCoursesList = new ArrayList<>();
+        allCoursesList.add(c1);
+        allCoursesList.add(c2);
+        allCoursesList.add(c3);
+
+        for(Course temp : allCoursesList){
+            System.out.println(temp);
+        }
+
         Grade gr1 = new Grade();
         Grade gr2 = new Grade(10, st2, c2);
         Grade gr3 = new Grade(6, st1, c3);
@@ -52,6 +80,15 @@ public class MainService {
         Grade[] allGrades = {gr1, gr2, gr3};
 
         for(Grade temp : allGrades){
+            System.out.println(temp);
+        }
+
+        ArrayList<Grade> allGradeList = new ArrayList<>();
+        allGradeList.add(gr1);
+        allGradeList.add(gr2);
+        allGradeList.add(gr3);
+
+        for(Grade temp : allGradeList){
             System.out.println(temp);
         }
     }
