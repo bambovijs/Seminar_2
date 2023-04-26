@@ -158,8 +158,6 @@ public class MainService {
                 if(temp.getStudent().equals(student)){
                     gradesSum += (temp.getGradeValue()*temp.getCourse().getCreditPoints());
                     creditPointsCounter += temp.getCourse().getCreditPoints();
-
-
                 }
             }
 
