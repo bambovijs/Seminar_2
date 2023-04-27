@@ -74,7 +74,7 @@ public class Grade {
     //4.toString
     @Override
     public String toString() {
-        return "" + g_id + ": " + student.getName() + " " + student.getSurename() + ", grade ->" + gradeValue + " ("+ course.getTitle() +")";
+        return "" + g_id + ": " + student.getName() + ", grade ->" + gradeValue + " ("+ course.getTitle() +")";
     }
 
 
