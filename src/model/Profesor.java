@@ -43,7 +43,7 @@ public class Profesor extends Person {
     // 4. toString()
     @Override
     public String toString() {
-        return "" + p_id + ": " + super.toString() + ", " + p_degree + "";
+        return "PROFESOR-" + p_id + ": " + super.toString() + ", " + p_degree + "";
     }
 
     

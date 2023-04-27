@@ -9,10 +9,13 @@ import model.Faculty;
 import model.Grade;
 import model.Profesor;
 import model.Student;
+import model.Person;
 
 public class MainService {
-    private static ArrayList<Student> allStudentsList = new ArrayList<>();
-    private static ArrayList<Profesor> allProfesorList = new ArrayList<>();
+    // private static ArrayList<Student> allStudentsList = new ArrayList<>();
+    // private static ArrayList<Profesor> allProfesorList = new ArrayList<>();
+
+    private static ArrayList<Person> allPersons = new ArrayList<>();
     private static ArrayList<Course> allCoursesList = new ArrayList<>();
     private static ArrayList<Grade> allGradeList = new ArrayList<>();
     public static void main(String[] args) {
@@ -25,61 +28,34 @@ public class MainService {
 
         Student st1 = new Student();
         Student st2 = new Student("Jānis", "Bērziņš", Faculty.Unknown, "101010-10101");
+        Student st3 = new Student("Līga", "Priede", Faculty.Unknown, "101010-10101");
 
-        Student[] allStudents = {st1, st2};
-
-        for(Student temp : allStudents){
-            System.out.println(temp);
-        }
-
-        //ArrayList<Student> allStudentsList = new ArrayList<>();
-        allStudentsList.add(st1);
-        allStudentsList.add(st2);
-
-        for(Student temp : allStudentsList){
-            System.out.println(temp);
-        }
-
+        allPersons.add(st1);
+        allPersons.add(st2);
+        allPersons.add(st3);
 
         Profesor pr1 = new Profesor();
-        Profesor pr2 = new Profesor("Ra", "Ba", Degree.Master);
-        Profesor pr3 = new Profesor("Karina", "Skirmante", Degree.Master);
+        Profesor pr2 = new Profesor("Ra", "Ba","101010-10100", Degree.Master);
+        Profesor pr3 = new Profesor("Karina", "Skirmante", "101010-10100", Degree.Master);
 
-       //Profesor[] allProfesors = {pr1, pr2};
+        allPersons.add(pr1);
+        allPersons.add(pr2);
+        allPersons.add(pr3);
 
-        for(Profesor temp : allProfesorList){
-            System.out.println(temp);
+        for(Person temp : allPersons){
+            System.out.println(temp.toString());
         }
-
-        ArrayList<Profesor> allProfesorList = new ArrayList<>();
-        allProfesorList.add(pr1);
-        allProfesorList.add(pr2);
-        allProfesorList.add(pr3);
-        
-        for(Profesor temp : allProfesorList){
-            System.out.println(temp);
-        }
+        System.out.println("----------------------------------------");
 
         Course c1 = new Course();
         Course c2 = new Course("Programmesana timekli", 4, CourseGradeType.EXAM, pr3);
-        Course c3 = new Course("Programmesana timekli X2", 4, CourseGradeType.EXAM, pr3);
+        Course c3 = new Course("Programmesana timekli X2", 4, CourseGradeType.EXAM, pr2);
         Course c4 = new Course("Difrencialvienadojumi", 2, CourseGradeType.EXAM, pr1);
 
-        Course[] allCourses = {c1, c2, c3, c4};
-
-        for(Course temp : allCourses){
-            System.out.println(temp);
-        }
-
-        //ArrayList<Course> allCoursesList = new ArrayList<>();
         allCoursesList.add(c1);
         allCoursesList.add(c2);
         allCoursesList.add(c3);
         allCoursesList.add(c4);
-
-        for(Course temp : allCoursesList){
-            System.out.println(temp);
-        }
 
         Grade gr1 = new Grade();
         Grade gr2 = new Grade(10, st2, c2);
@@ -91,7 +67,6 @@ public class MainService {
             System.out.println(temp);
         }
 
-        //ArrayList<Grade> allGradeList = new ArrayList<>();
         allGradeList.add(gr1);
         allGradeList.add(gr2);
         allGradeList.add(gr3);
@@ -99,39 +74,54 @@ public class MainService {
         for(Grade temp : allGradeList){
             System.out.println(temp);
         }
-
-        System.out.println("---------------------------------");
-        for(Student temp : allStudentsList){
-            System.out.println(temp.getName() + ": " + calculateAVGGrade(temp));
+ 
+        System.out.println("--------------AVERAGE GRADE-------------------");
+        for(Person temp : allPersons){
+            if(temp instanceof Student){
+                Student tempStudent = (Student)temp;
+                System.out.println(tempStudent.getName() + ": " + calculateAVGGrade(tempStudent));
+            }
+            
         }
 
-        System.out.println("---------------------------------");
+        System.out.println("--------------AVERAGE GRADE IN COURSE-------------------");
         for(Course temp : allCoursesList){
             System.out.println(temp.getTitle() + " : " + calculateAVGGradeInCourse(temp));
         } 
-
-        System.out.println("---------------------------------");
-        for(Student temp : allStudentsList){
-            System.out.println(temp.getName() + " : " + calculateWeightedAVGGrade(temp));
+ 
+        System.out.println("-------------AVERAGE GRADE--------------------");
+        for(Person temp : allPersons){
+            if(temp instanceof Student){
+                Student tempStudent = (Student)temp;
+                System.out.println(temp.getName() + ": " + calculateWeightedAVGGrade(tempStudent));
+            }
         } 
 
-        System.out.println("---------------------------------");
-        for(Profesor temp : allProfesorList){
-            System.out.println(temp.getP_name() + " : " + calculateCourseCount(temp));
+        System.out.println("---------COURSE COUNT------------------------");
+        for(Person temp : allPersons){
+            if(temp instanceof Profesor){
+                Profesor tempProfesor = (Profesor)temp;
+                System.out.println(temp.getName() + ": " + calculateCourseCount(tempProfesor));
+            }
         } 
 
-        System.out.println("---------------------------------");
-        for(Student temp : allStudentsList){
-            System.out.println(temp);
+        System.out.println("-------------ALL STUDENTS--------------------");
+        ArrayList<Student> onlyStudents = new ArrayList<>();
+        for(Person temp : allPersons){
+            if(temp instanceof Student){
+                Student tempStudent = (Student)temp;
+                System.out.println(tempStudent.getName() + ": ");
+                onlyStudents.add(tempStudent);
+            }
         } 
 
         ArrayList<Student> sortedAllStudentList = sortStudents();
-        System.out.println("---------------------------------");
+        System.out.println("--------------SORTED ALL STUDENTS-------------------");
         for(Student temp : sortedAllStudentList){
             System.out.println(temp);
         } 
     }
-
+    
     private static float calculateAVGGrade(Student student){
         if(student != null){
             int gradesSum = 0;
@@ -207,8 +197,11 @@ public class MainService {
     private static ArrayList<Student> sortStudents(){
         ArrayList<Student> sortedStudents = new ArrayList<>();
 
-        for(Student temp : allStudentsList){
-            sortedStudents.add(temp);
+        for(Person temp : allPersons){
+            if(temp instanceof Student){
+                Student tempStudent = (Student)temp;
+                sortedStudents.add(tempStudent);
+            }
         }
 
         for(int i = 0; i < sortedStudents.size(); i++){
@@ -227,5 +220,7 @@ public class MainService {
 
         return sortedStudents;
     }
+
 }
+
 

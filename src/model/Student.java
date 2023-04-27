@@ -50,7 +50,7 @@ public class Student extends Person {
     // 4. toString
     // Automaticly owerriten in main function @ MainService if call String function
     public String toString(){
-        return "" + id + ": " + super.toString() + ", " + faculty; 
+        return "STUDENT-" + id + ": " + super.toString() + ", " + faculty; 
     }
 
     // 5. ADDITIONAL FUNCTIONS

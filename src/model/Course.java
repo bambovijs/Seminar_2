@@ -96,7 +96,7 @@ public class Course {
     @Override
     public String toString() {
         return "" + id + ": " + title + ", (" + creditPoints + "), " + type
-                + ", " + profesor.getP_name() + " " + profesor.getP_surename();
+                + ", " + profesor.getName() + " " + profesor.getSurname();
     }
 
     //4.toString
