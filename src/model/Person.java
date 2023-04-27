@@ -59,7 +59,11 @@ public class Person {
         setPersonalCode(personalCode);
     }
 
-
     //4.toString 
+    @Override
+    public String toString() {
+        return "" + name + ", " + surname + ", " + personalCode + " ";
+    }
+
     //5.Aditional functions
 }
